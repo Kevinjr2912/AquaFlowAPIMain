@@ -10,18 +10,20 @@ La API desarrollada a continuación está estructurada siguiendo los principios 
 ## Instalación
 
 1. Clona el repositorio:
-bash
+```bash
 git clone https://github.com/Kevinjr2912/AquaFlowAPIMain.git
 cd AquaFlowAPIMain
-
+```
 
 2. Instala las dependencias:
-bash
+```bash
 npm i
+```
 
 3. Configura el archivo .env:
-Crea un archivo .env en la raíz del proyecto con el siguiente contenido:
+Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
 
+```
 DB_HOST = ""
 DB_USER = ""
 DB_DATABASE = ""
@@ -33,13 +35,15 @@ PORT_SERVER= 4000
 SALT=10
 HTTP_ONLY= false
 AVAILABLE_DOMAINS= http://localhost:5173,http://localhost:5174
+```
 
 
 ## Ejecución del proyecto
 
 Para iniciar el servidor de desarrollo:
-bash
+```bash
 npm run dev
+```
 
 
 La aplicación estará disponible en http://localhost:4000 (o el puerto que se asigne en las variables de entorno).
