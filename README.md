@@ -31,7 +31,7 @@ DB_SCHEMA = ""
 DB_PASSWORD = ""
 
 ACCESS_TOKEN_PRIVATE_KEY= TOKEN
-PORT_SERVER= 4000
+PORT_SERVER= 5432
 SALT=10
 HTTP_ONLY= false
 AVAILABLE_DOMAINS= http://localhost:5173,http://localhost:5174
@@ -46,4 +46,4 @@ npm run dev
 ```
 
 
-La aplicación estará disponible en http://localhost:4000 (o el puerto que se asigne en las variables de entorno).
+La aplicación estará disponible en http://localhost:5432 (o el puerto que se asigne en las variables de entorno).
