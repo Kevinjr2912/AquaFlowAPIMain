@@ -1,0 +1,11 @@
+# Node.js
+node_modules/
+
+# Compilación TypeScript
+dist/
+
+# Configuración del entorno
+.env
+
+# Archivos del sistema operativo
+.DS_Store
