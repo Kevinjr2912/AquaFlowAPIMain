@@ -1,7 +1,7 @@
 import { InvalidArgumentError } from "src/shared/errors/InvalidArgument_error";
 
 export class UserPassword {
-  constructor(readonly value: string){
+  constructor(public value: string){
     this.ensureDefined(value);
     this.ensurePasswordHasExactLength(value);
     this.ensurePasswordHasRequiredCharacters(value);

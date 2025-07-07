@@ -45,6 +45,10 @@ export class User {
   getPassword(): string {
     return this.password.value;
   }
+
+  setPassword(passwordHashed: string): void {
+    this.password.value = passwordHashed;
+  }
   
   getFiltersId(): string [] {
     return this.filtersId?.filter(f => f.value).map(f => f.value) ?? [];
