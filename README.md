@@ -1,27 +1,27 @@
 # README - AquaFlowAPIMain
 
-## Descripción
-La API desarrollada a continuación está estructurada siguiendo los principios de la arquitectura hexagonal, lo que permite una integración eficiente y flexible con servicios externos, como el cliente Frontend disponible en el siguiente repositorio: https://github.com/Andresito126/AquaFlow-FrontEnd.
+## Description
+The API developed below is structured following the principles of hexagonal architecture, allowing efficient and flexible integration with external services, such as the Frontend client available in the following repository: https://github.com/Andresito126/AquaFlow-FrontEnd.
 
-## Requisitos previos
-- Node.js (versión 20.x o superior)
-- npm (viene incluido con Node.js)
+## Prerequisites
+- Node.js (version 20.x or higher)
+- npm (comes included with Node.js)
 
-## Instalación
+## Instalation
 
-1. Clona el repositorio:
+1. Clone the repository:
 ```bash
 git clone https://github.com/Kevinjr2912/AquaFlowAPIMain.git
 cd AquaFlowAPIMain
 ```
 
-2. Instala las dependencias:
+2. Install the dependencies:
 ```bash
 npm i
 ```
 
-3. Configura el archivo .env:
-Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+3. Configure the .env file:
+Create a `.env` file in the root of the project with the following contents:
 
 ```
 DB_HOST = ""
@@ -38,11 +38,11 @@ AVAILABLE_DOMAINS= http://localhost:5173,http://localhost:5174
 ```
 
 
-## Ejecución del proyecto
+## Project execution
 
-Para iniciar el servidor de desarrollo:
+To start the development server:
 ```bash
 npm run dev
 ```
 
-La aplicación estará disponible en http://localhost:4000 (o el puerto que se asigne en las variables de entorno).
+The application will be available at http://localhost:4000 (or the port assigned in the environment variables).
