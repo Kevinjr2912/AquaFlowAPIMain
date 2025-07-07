@@ -27,11 +27,11 @@ Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
 DB_HOST = ""
 DB_USER = ""
 DB_DATABASE = ""
-DB_SCHEMA = ""
+DB_PORT = ""
 DB_PASSWORD = ""
 
 ACCESS_TOKEN_PRIVATE_KEY= TOKEN
-PORT_SERVER= 5432
+PORT_SERVER= 4000
 SALT=10
 HTTP_ONLY= false
 AVAILABLE_DOMAINS= http://localhost:5173,http://localhost:5174
@@ -45,5 +45,4 @@ Para iniciar el servidor de desarrollo:
 npm run dev
 ```
 
-
-La aplicación estará disponible en http://localhost:5432 (o el puerto que se asigne en las variables de entorno).
+La aplicación estará disponible en http://localhost:4000 (o el puerto que se asigne en las variables de entorno).

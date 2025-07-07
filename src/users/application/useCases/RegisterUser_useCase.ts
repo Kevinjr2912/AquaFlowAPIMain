@@ -1,7 +1,8 @@
-import { User } from "src/users/domain/entities/User";
-import { UserRepository } from "src/users/domain/repositories/IUserRepository";
+import { ExistingEmailError } from "../../../shared/errors/ExistingEmailError";
+import { User } from "../../domain/entities/User";
+import { UserRepository } from "../../domain/repositories/IUserRepository";
 import { BcryptPasswordHasher } from "../services/Bcrypt_service";
-import { ExistingEmailError } from "src/shared/errors/ExistingEmailError";
+
 
 export class RegisterUserUseCase {
   constructor(

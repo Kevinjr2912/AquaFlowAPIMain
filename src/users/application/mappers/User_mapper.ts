@@ -1,10 +1,11 @@
-import { User } from "src/users/domain/entities/User";
+import { User } from "../../domain/entities/User";
+import { UserEmail } from "../../domain/valueObjects/UserEmail_valueObject";
+import { UserFirstName } from "../../domain/valueObjects/UserFirstName_valueObject";
+import { UserId } from "../../domain/valueObjects/UserId_valueObject";
+import { UserLastName } from "../../domain/valueObjects/UserLastName_valueObject";
+import { UserPassword } from "../../domain/valueObjects/UserPassword_valueObject";
 import { CreateUserDTO } from "../dtos/input/CreateUser_dto";
-import { UserId } from "src/users/domain/valueObjects/UserId_valueObject";
-import { UserFirstName } from "src/users/domain/valueObjects/UserFirstName_valueObject";
-import { UserLastName } from "src/users/domain/valueObjects/UserLastName_valueObject";
-import { UserEmail } from "src/users/domain/valueObjects/UserEmail_valueObject";
-import { UserPassword } from "src/users/domain/valueObjects/UserPassword_valueObject";
+
 
 export class UserMapper {
 

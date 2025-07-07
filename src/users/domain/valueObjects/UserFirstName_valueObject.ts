@@ -1,4 +1,4 @@
-import { InvalidArgumentError } from "src/shared/errors/InvalidArgument_error";
+import { InvalidArgumentError } from "../../../shared/errors/InvalidArgument_error";
 
 export class UserFirstName {
   constructor(readonly value: string){
