@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
-import { PasswordHasherRepository } from "../../application/repositories/IPasswordHasher_repository";
 import { config } from "../../../core/config";
+import { PasswordHasherRepository } from "../../application/repositories/IPasswordHasher_repository";
 
 export class Bcrypt implements PasswordHasherRepository {
   async hash(password: string): Promise<string> {

@@ -2,8 +2,7 @@ import { Postgresql } from "../../../core/database/postgresql";
 import { User } from "../../domain/entities/User";
 import { UserRepository } from "../../domain/repositories/IUserRepository";
 
-
-export class PostgreSQL implements UserRepository {
+export class PostgreSQLUser implements UserRepository {
 
   private readonly conn = Postgresql.getInstance();
 
