@@ -18,7 +18,7 @@ export class UserMapper {
       new UserFirstName(firstName),
       new UserLastName(lastName),
       new UserEmail(email),
-      new UserPassword(password)
+      UserPassword.create(password)
     );
 
   }

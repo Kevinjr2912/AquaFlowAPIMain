@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { InvalidArgumentError } from "../../../shared/errors/InvalidArgument_error";
-import { ExistingEmailError } from "../../../shared/errors/ExistingEmailError";
+import { ExistingEmailError } from "../../../shared/errors/ExistingEmail_error";
 import { SignUpUseCase } from "../../application/useCases/SignUp_useCase";
 import { CreateUserDTO } from "../../../users/application/dtos/input/CreateUser_dto";
 import { UserMapper } from "../../../users/application/mappers/User_mapper";

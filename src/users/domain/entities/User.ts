@@ -1,5 +1,4 @@
 import { UserEmail } from "../valueObjects/UserEmail_valueObject";
-import { UserFilterId } from "../valueObjects/UserFilterId_valueObject";
 import { UserFirstName } from "../valueObjects/UserFirstName_valueObject";
 import { UserId } from "../valueObjects/UserId_valueObject";
 import { UserLastName } from "../valueObjects/UserLastName_valueObject";
@@ -18,8 +17,7 @@ export class User {
     private readonly firstName: UserFirstName,
     private readonly lastName: UserLastName,
     private readonly email: UserEmail,
-    private readonly password: UserPassword,
-    private readonly filtersId?: UserFilterId []
+    private readonly password: UserPassword
   ){}
 
   getUserId(): string {
@@ -50,8 +48,4 @@ export class User {
     this.password.value = passwordHashed;
   }
   
-  getFiltersId(): string [] {
-    return this.filtersId?.filter(f => f.value).map(f => f.value) ?? [];
-  }
-
 }

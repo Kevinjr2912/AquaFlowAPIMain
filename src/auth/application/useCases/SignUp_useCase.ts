@@ -1,7 +1,7 @@
-import { ExistingEmailError } from "../../../shared/errors/ExistingEmailError";
+import { ExistingEmailError } from "../../../shared/errors/ExistingEmail_error";
 import { User } from "../../../users/domain/entities/User";
-import { UserRepository } from "../../../users/domain/repositories/IUserRepository";
-import { BcryptPasswordHasher } from "../services/Bcrypt_service";
+import { UserRepository } from "../../../users/domain/repositories/IUser_repository";
+import { BcryptPasswordHasher } from "../services/BcryptPasswordHasher_service";
 
 export class SignUpUseCase {
 
