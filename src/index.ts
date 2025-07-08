@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from 'cookie-parser';
 import { config } from './core/config';
 import { userRouter } from './users/infraestructure/routes/User_routes';
+import { authRouter } from './auth/infraestructure/routes/Auth_routes';
 
 const app = express();
 const PORT = config.PORT_SERVER;
@@ -30,11 +31,8 @@ app.use(cors({
   credentials: true
 }));
 
-app.get("/", (res: Response, req: Request) => {
-  res.send("JAJA")
-})
-
 // resources
 app.use("/users", userRouter);
+app.use("/auth", authRouter);
 
 app.listen(PORT,() => { console.log("Server running on http://localhost:" + PORT )});

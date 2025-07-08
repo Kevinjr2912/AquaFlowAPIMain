@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { CreateUserDTO } from "../../application/dtos/input/CreateUser_dto";
-import { RegisterUserUseCase } from "../../application/useCases/RegisterUser_useCase";
-import { UserMapper } from "../../application/mappers/User_mapper";
 import { InvalidArgumentError } from "../../../shared/errors/InvalidArgument_error";
 import { ExistingEmailError } from "../../../shared/errors/ExistingEmailError";
+import { SignUpUseCase } from "../../application/useCases/SignUp_useCase";
+import { CreateUserDTO } from "../../../users/application/dtos/input/CreateUser_dto";
+import { UserMapper } from "../../../users/application/mappers/User_mapper";
 
-export class RegisterUserController {
+export class SignUpController {
 
-  constructor(private readonly registerUserUseCase: RegisterUserUseCase){}
+  constructor(private readonly signUpUseCase: SignUpUseCase){}
 
   execute = async (req: Request, res: Response): Promise<any> => {
 
@@ -16,7 +16,7 @@ export class RegisterUserController {
     try {
 
       const newUser = UserMapper.toUser(userDTO);
-      await this.registerUserUseCase.execute(newUser);
+      await this.signUpUseCase.execute(newUser);
 
       return res.status(201).send({ 
         data: {
