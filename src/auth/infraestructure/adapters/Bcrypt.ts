@@ -8,4 +8,8 @@ export class Bcrypt implements PasswordHasherRepository {
     const hashPassword = await bcrypt.hash(password, salt);
     return hashPassword;
   }
+
+  async compare(plainPassword: string, hashedPassword: string): Promise<boolean> {
+    return bcrypt.compare(plainPassword, hashedPassword)
+  }
 }
