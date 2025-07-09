@@ -1,3 +1,5 @@
+import { FilterCreatedBy } from "../valueObjects/filter/FilterCreatedBy_valueObject";
+import { FilterDateRecord } from "../valueObjects/filter/FilterDateRecord_valueObject";
 import { FilterId } from "../valueObjects/filter/FilterId_valueObject";
 import { FilterModel } from "../valueObjects/filter/FilterModel_valueObject";
 import { FilterName } from "../valueObjects/filter/FilterName_valueObject";
@@ -12,14 +14,19 @@ export class Filter {
 
   constructor(
     private readonly filterId: FilterId,
+    private readonly createdBy: FilterCreatedBy,
     private readonly name: FilterName,
     private readonly model: FilterModel,
-    private readonly installationDate: Date,
+    private readonly dateRecord: FilterDateRecord,
     private readonly isActive: FilterStatus,
   ){}
 
   getId(): string {
     return this.filterId.value;
+  }
+
+  getCreatedBy(): string {
+    return this.createdBy.value;
   }
 
   getName(): string {
@@ -31,7 +38,7 @@ export class Filter {
   }
 
   getInstallationDate(): Date {
-    return this.installationDate;
+    return this.dateRecord.value;
   }
 
   getStatus(): boolean {
