@@ -1,7 +1,7 @@
 import { InvalidArgumentError } from "../../../../shared/errors/InvalidArgument_error";
 
 export class FilterStatus {
-  constructor(readonly value: boolean) {
+  constructor(public value: boolean) {
     this.ensureValueIsDefined(value);
   }
 

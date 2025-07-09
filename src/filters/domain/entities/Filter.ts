@@ -1,3 +1,4 @@
+import { UserId } from "../../../users/domain/valueObjects/UserId_valueObject";
 import { FilterCreatedBy } from "../valueObjects/filter/FilterCreatedBy_valueObject";
 import { FilterDateRecord } from "../valueObjects/filter/FilterDateRecord_valueObject";
 import { FilterId } from "../valueObjects/filter/FilterId_valueObject";
@@ -9,6 +10,7 @@ import { Sensor } from "./Sensor";
 
 export class Filter {
   
+  private userId: UserId | null = null;
   private filterLayers: FilterLayer[] = [];
   private sensors: Sensor[] = [];
 
@@ -18,13 +20,22 @@ export class Filter {
     private readonly name: FilterName,
     private readonly model: FilterModel,
     private readonly dateRecord: FilterDateRecord,
-    private readonly isActive: FilterStatus,
+    private isActive: FilterStatus,
   ){}
+
+  assignToUser(userId: UserId) {
+    this.userId = userId;
+    this.isActive.value = true;
+  }
 
   getId(): string {
     return this.filterId.value;
   }
 
+  getUserId(): string | null {
+    return this.userId ? this.userId.value : null;
+  }
+  
   getCreatedBy(): string {
     return this.createdBy.value;
   }
