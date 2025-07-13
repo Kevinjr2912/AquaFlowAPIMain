@@ -36,11 +36,36 @@ export class PostgreSQLUser implements UserRepository {
   }
 
   async existsByEmail(email: string): Promise<boolean> {
-  
+
     const sql = `SELECT email FROM users WHERE email = $1`;
     const result = await this.conn.query(sql, [email]);
 
     return result.rows.length > 0;
+
+  }
+
+  async findUserById(userId: string): Promise<User | null> {
+    
+    const sql = `
+      SELECT *
+      FROM users
+      WHERE user_id = $1
+    `;
+
+    const result = await this.conn.query(sql, [userId]);
+
+    if (result.rows.length === 0) return null;
+
+    const fields = result.rows[0];
+
+    return new User(
+      new UserId(fields.user_id),
+      fields.role,
+      new UserFirstName(fields.first_name),
+      new UserLastName(`${result.rows[0].first_surname} ${result.rows[0].middle_surname}`),
+      new UserEmail(fields.email),
+      UserPassword.fromHashed(fields.password_hashed),
+    );
 
   }
 

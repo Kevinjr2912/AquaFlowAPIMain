@@ -72,7 +72,7 @@ exports.up = (pgm) => {
     value: {
       type: 'DECIMAL(5,2)',
       notNull: true
-    },
+    },  
     recorded_at: {
       type: 'TIMESTAMP',
       notNull: true

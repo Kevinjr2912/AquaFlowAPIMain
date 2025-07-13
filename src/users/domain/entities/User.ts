@@ -20,6 +20,10 @@ export class User {
     private readonly password: UserPassword
   ){}
 
+  isAdmin(): boolean {
+    return this.userRole === 'Administrator';
+  }
+
   getUserId(): string {
     return this.userId.value;
   }

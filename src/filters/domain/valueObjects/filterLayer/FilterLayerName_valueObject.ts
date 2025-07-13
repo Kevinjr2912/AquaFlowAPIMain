@@ -5,7 +5,7 @@ export enum TypeFilterLayer {
   FarInfraredBall = "Far Infrared Ball",
   SiliconSand = "Silicon sand",
   MineralSand = "Mineral sand",
-  TDS = "TDS",
+  TDS = "Activated carbon",
 }
 
 export class FilterLayerName {

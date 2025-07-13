@@ -13,6 +13,7 @@ export class FilterDateRecord {
   }
 
   private ensureDateIsValid(value: Date): void {
+    console.log(`${value.getTime()} > ${new Date().getTime()}`)
     if (value.getTime() > new Date().getTime()) {
       throw new InvalidArgumentError("Record date cannot be in the future");
     }

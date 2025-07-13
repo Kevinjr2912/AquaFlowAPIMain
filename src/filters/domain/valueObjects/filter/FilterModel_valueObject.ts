@@ -3,18 +3,12 @@ import { InvalidArgumentError } from "../../../../shared/errors/InvalidArgument_
 export class FilterModel {
   constructor(readonly value: string) {
     this.ensureValueIsDefined(value);
-    this.ensureLengthIsValid(value);
   }
 
   private ensureValueIsDefined(value: string): void {
     if (value === undefined || value === null || value === "") {
-      throw new InvalidArgumentError("Filter model must be defined");
+      throw new InvalidArgumentError("The filter model value must be defined");
     }
   }
 
-  private ensureLengthIsValid(value: string): void {
-    if (value.length < 2 || value.length > 30) {
-      throw new InvalidArgumentError("Filter model must be between 2 and 30 characters long");
-    }
-  }
 }
