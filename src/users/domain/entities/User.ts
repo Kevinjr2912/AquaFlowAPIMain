@@ -5,8 +5,8 @@ import { UserLastName } from "../valueObjects/UserLastName_valueObject";
 import { UserPassword } from "../valueObjects/UserPassword_valueObject";
 
 export enum UserRole {
-  regularUser = 'Regular user',
-  administrator = 'Administrator'
+  RegularUser = 'Regular user',
+  Administrator = 'Administrator'
 }
 
 export class User {
@@ -19,6 +19,10 @@ export class User {
     private readonly email: UserEmail,
     private readonly password: UserPassword
   ){}
+
+  isAdmin(): boolean {
+    return this.userRole === 'Administrator';
+  }
 
   getUserId(): string {
     return this.userId.value;
