@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { UserCredentialsDTO } from "../../../users/application/dtos/input/UserCredentials_dto";
 import { SignInUseCase } from "../../application/useCases/SingIn_useCase";
 import { UnauthorizedUserError } from "../../../shared/errors/UnauthorizedUser_error";
 import { InvalidArgumentError } from "../../../shared/errors/InvalidArgument_error";
@@ -14,7 +13,15 @@ export class SignInController {
 
       const token = await this.signUseCase.execute(email, password);
 
-      return res.json({ data: token });
+      return res.status(200).json({
+        data: {
+          type: "authentication",
+          id: "token", 
+          attributes: {
+            token: token 
+          }
+        }
+      });
 
     } catch (err) {
 
