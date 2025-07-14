@@ -5,6 +5,7 @@ import { FilterId } from "../../domain/valueObjects/filter/FilterId_valueObject"
 import { FilterModel } from "../../domain/valueObjects/filter/FilterModel_valueObject";
 import { FilterStatus } from "../../domain/valueObjects/filter/FilterStatus_valueObject";
 import { CreateFilterDTO } from "../dtos/input/CreateFilter_dto";
+import { FilterDTO } from '../dtos/output/Filter_dto';
 
 export class FilterMapper {
 
@@ -16,6 +17,16 @@ export class FilterMapper {
       new FilterDateRecord(new Date(dateRecord)),
       new FilterStatus(isActive)
     )
+  }
+
+  static toFilterDTO(rows: any[]): FilterDTO[] {
+    return rows.map((row) => ({
+      filterId: row.filter_id,
+      model: row.name_device_model,
+      createBy: `${row.first_name} ${row.first_surname} ${row.middle_surname}`,
+      isActive: row.is_active,
+      createdAt: new Date(row.created_at)
+    }));
   }
 
 }

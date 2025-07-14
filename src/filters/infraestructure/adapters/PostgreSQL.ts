@@ -1,4 +1,6 @@
 import { Postgresql } from "../../../core/database/postgresql";
+import { FilterDTO } from "../../application/dtos/output/Filter_dto";
+import { FilterMapper } from "../../application/mappers/Filter_mapper";
 import { Filter } from "../../domain/entities/Filter";
 import { FilterLayer } from "../../domain/entities/FilterLayer";
 import { Sensor } from "../../domain/entities/Sensor";
@@ -133,6 +135,30 @@ export class PostgreSQL implements FilterRepository {
     const result = await this.conn.query(sql, [name, model, unit]);
 
     return result.rows.length > 0 ? result.rows[0].sensor_model_id : null;
+  }
+
+  private async getAllFilters(): Promise<FilterDTO[]> {
+    const sql = `
+      SELECT 
+        f.filter_id,
+        fm.name_device_model,
+        f.is_active,
+        f.created_at,
+        u.first_name,
+        u.first_surname,
+        u.middle_surname
+      FROM filters f
+      JOIN users u ON f.user_id = u.user_id
+      JOIN filter_models fm ON f.filter_model_id = fm.device_model_id
+      ORDER BY f.created_at DESC
+    `;
+
+    const result = await this.conn.query(sql);
+
+    if (result.rows.length === 0) return [];
+
+    return FilterMapper.toFilterDTO(result.rows);
+    
   }
   
 }
