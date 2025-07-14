@@ -148,12 +148,14 @@ export class PostgreSQL implements FilterRepository {
         u.first_surname,
         u.middle_surname
       FROM filters f
-      JOIN users u ON f.user_id = u.user_id
+      JOIN users u ON f.created_by = u.user_id
       JOIN filter_models fm ON f.filter_model_id = fm.device_model_id
       ORDER BY f.created_at DESC
     `;
 
     const result = await this.conn.query(sql);
+    
+    console.log(result)
 
     if (result.rows.length === 0) return [];
 
