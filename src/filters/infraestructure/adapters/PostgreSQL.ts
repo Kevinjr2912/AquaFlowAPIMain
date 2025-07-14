@@ -137,7 +137,7 @@ export class PostgreSQL implements FilterRepository {
     return result.rows.length > 0 ? result.rows[0].sensor_model_id : null;
   }
 
-  private async getAllFilters(): Promise<FilterDTO[]> {
+  async getAllFilters(): Promise<FilterDTO[]> {
     const sql = `
       SELECT 
         f.filter_id,
@@ -158,7 +158,7 @@ export class PostgreSQL implements FilterRepository {
     if (result.rows.length === 0) return [];
 
     return FilterMapper.toFilterDTO(result.rows);
-    
+
   }
   
 }
