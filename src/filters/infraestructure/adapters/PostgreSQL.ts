@@ -195,5 +195,26 @@ export class PostgreSQL implements FilterRepository {
     return FilterMapper.toFilterFromDB(result.rows[0]);
 
   }
+
+  async getFiltersByUserId(userId: string): Promise<Filter[]> {
+    const sql = `
+      SELECT
+        f.filter_id,
+        fm.name_device_model,
+        f.user_id,
+        f.created_by,
+        f.created_at,
+        f.is_active
+      FROM filters f
+      JOIN filter_models fm on f.filter_model_id = fm.device_model_id
+      WHERE f.user_id = $1
+    `;
+
+    const result = await this.conn.query(sql, [userId]);
+
+    if (result.rows.length === 0) return [];
+
+    return FilterMapper.toFiltersFromDB(result.rows);
+  }
   
 }
