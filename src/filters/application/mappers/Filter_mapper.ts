@@ -46,4 +46,18 @@ export class FilterMapper {
 
   }
 
+  static toFiltersFromDB(rows: any[]): Filter[] {
+    
+    return rows.map((row) => (
+      new Filter(
+        new FilterId(row.filter_id),
+        new FilterModel(row.name_device_model),
+        new FilterCreatedBy(row.created_by),
+        new FilterDateRecord(new Date(row.created_at)),
+        new FilterStatus(row.is_active)
+      )
+    ));
+
+  }
+
 }
