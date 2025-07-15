@@ -8,7 +8,7 @@ import { JWT } from "./adapters/JWT";
 import { config } from "../../core/config";
 import { JWTGenerateToken } from "../application/services/JWTGenerateToken_service";
 import { SignInController } from "./controllers/SignIn_controller";
-import { postgreSQL } from "../../users/infraestructure/dependencies";
+import { userPostgreSQL } from "../../users/infraestructure/dependencies";
 
 const bcrypt = new Bcrypt();
 const bcryptPasswordHasher  = new BcryptPasswordHasher(bcrypt);
@@ -18,8 +18,8 @@ const jwt = new JWT(config.SECRET_KEY!);
 const jwtGenerateToken = new JWTGenerateToken(jwt);
 
 // useCases
-const signUpUseCase = new SignUpUseCase(postgreSQL,bcryptPasswordHasher);
-const signInUseCase = new SignInUseCase(postgreSQL, bcryptComparePassword, jwtGenerateToken);
+const signUpUseCase = new SignUpUseCase(userPostgreSQL, bcryptPasswordHasher);
+const signInUseCase = new SignInUseCase(userPostgreSQL, bcryptComparePassword, jwtGenerateToken);
 
 // controllers
 export const signUpController = new SignUpController(signUpUseCase);

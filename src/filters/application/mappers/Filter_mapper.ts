@@ -1,3 +1,4 @@
+import { UserId } from "../../../users/domain/valueObjects/UserId_valueObject";
 import { Filter } from "../../domain/entities/Filter";
 import { FilterCreatedBy } from "../../domain/valueObjects/filter/FilterCreatedBy_valueObject";
 import { FilterDateRecord } from "../../domain/valueObjects/filter/FilterDateRecord_valueObject";
@@ -27,6 +28,22 @@ export class FilterMapper {
       isActive: row.is_active,
       createdAt: new Date(row.created_at)
     }));
+  }
+
+  static toFilterFromDB(row: any): Filter {
+    
+    const filter = new Filter(
+      new FilterId(row.filter_id),
+      new FilterModel(row.name_device_model),
+      new FilterCreatedBy(row.created_by),
+      new FilterDateRecord(new Date(row.created_at)),
+      new FilterStatus(row.is_active)
+    );
+
+    if (row.user_id) filter.assignToUser(new UserId(row.user_id));
+
+    return filter;
+
   }
 
 }

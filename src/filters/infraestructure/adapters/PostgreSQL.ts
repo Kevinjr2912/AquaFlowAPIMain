@@ -69,6 +69,19 @@ export class PostgreSQL implements FilterRepository {
     return result.rows[0].sensor_model_id;
   }
 
+  async associateFilterToUser(filter: Filter): Promise<void> {
+      const sql = `
+        UPDATE filters 
+        SET user_id = $1, is_active = $2
+        WHERE filter_id = $3`;
+      
+      const params = [filter.getUserId(), filter.getStatus(), filter.getId()]
+      
+      const result = await this.conn.query(sql, params);
+
+      if (result.rowCount === 0) throw new Error("Failed to associate the filter with the user");
+  }
+
   private async associateSensorsFilter(filterId: string, sensors: Sensor[]): Promise<void> {
     for (const sensor of sensors) {
       let sensorModelId = await this.findSensorModel(sensor.getName(), sensor.getModel(), sensor.getUnitMeasurement());
@@ -154,12 +167,32 @@ export class PostgreSQL implements FilterRepository {
     `;
 
     const result = await this.conn.query(sql);
-    
-    console.log(result)
 
     if (result.rows.length === 0) return [];
 
     return FilterMapper.toFilterDTO(result.rows);
+
+  }
+
+  async findFilterById(filterId: string): Promise<Filter | null> {
+    const sql = `
+      SELECT
+        f.filter_id,
+        fm.name_device_model,
+        f.user_id,
+        f.created_by,
+        f.created_at,
+        f.is_active
+      FROM filters f
+      JOIN filter_models fm on f.filter_model_id = fm.device_model_id
+      WHERE f.filter_id = $1
+    `;
+
+    const result = await this.conn.query(sql, [filterId]);
+
+    if (result.rows.length === 0) return null;
+
+    return FilterMapper.toFilterFromDB(result.rows[0]);
 
   }
   
