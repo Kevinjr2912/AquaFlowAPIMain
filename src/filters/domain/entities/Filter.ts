@@ -39,6 +39,10 @@ export class Filter {
   getUserId(): string | null {
     return this.userId ? this.userId.value : null;
   }
+
+  setUserId(userId: string) {
+  this.userId = new UserId(userId);
+  }
   
   getCreatedBy(): string {
     return this.createdBy.value;

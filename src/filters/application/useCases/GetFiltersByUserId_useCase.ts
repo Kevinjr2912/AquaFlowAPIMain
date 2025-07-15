@@ -4,10 +4,10 @@ import { UserId } from "../../../users/domain/valueObjects/UserId_valueObject";
 import { Filter } from "../../domain/entities/Filter";
 import { FilterRepository } from "../../domain/repositories/IFilter_repository";
 
-export class GetFiltersByUserId {
+export class GetFiltersByUserIdUseCase {
   constructor(
-    private readonly filterRepository: FilterRepository,
-    private readonly userRepository: UserRepository
+    private readonly userRepository: UserRepository,
+    private readonly filterRepository: FilterRepository
   ) {}
 
   async execute(userId: string): Promise<Filter[]> {

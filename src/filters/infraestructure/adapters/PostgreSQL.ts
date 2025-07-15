@@ -201,6 +201,7 @@ export class PostgreSQL implements FilterRepository {
       SELECT
         f.filter_id,
         fm.name_device_model,
+        f.user_id,
         f.created_by,
         f.created_at,
         f.is_active
@@ -213,7 +214,7 @@ export class PostgreSQL implements FilterRepository {
 
     if (result.rows.length === 0) return [];
 
-    return FilterMapper.toFiltersFromDB(result.rows[0]);
+    return FilterMapper.toFiltersFromDB(result.rows);
   }
   
 }
