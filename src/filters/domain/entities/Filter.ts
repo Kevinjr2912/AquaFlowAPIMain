@@ -39,14 +39,6 @@ export class Filter {
   getUserId(): string | null {
     return this.userId ? this.userId.value : null;
   }
-
-  setUserId(userId: UserId): void {
-  if (this.userId?.value !== userId.value) {
-    this.userId = new UserId(userId.value);
-  }
-
-  this.isActive.value = true;
-  }
   
   getCreatedBy(): string {
     return this.createdBy.value;

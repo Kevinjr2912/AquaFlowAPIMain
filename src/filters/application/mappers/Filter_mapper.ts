@@ -40,7 +40,7 @@ export class FilterMapper {
       new FilterStatus(row.is_active)
     );
 
-    if (row.user_id) filter.setUserId(new UserId(row.user_id));
+    if (row.user_id) filter.assignToUser(new UserId(row.user_id));
 
     return filter;
 
