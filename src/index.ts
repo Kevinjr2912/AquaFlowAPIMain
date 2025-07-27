@@ -30,6 +30,10 @@ app.use(cors({
   credentials: true
 }));
 
+app.get('/', (req, res) => {
+  res.send('Hola, mundo!');
+});
+
 // resources
 app.use("/users", userRouter);
 app.use("/filters", filterRouter);
