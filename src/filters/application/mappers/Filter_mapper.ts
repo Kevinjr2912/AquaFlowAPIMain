@@ -15,7 +15,7 @@ export class FilterMapper {
       new FilterId(filterId),
       new FilterModel(model),
       new FilterCreatedBy(createdBy),
-      new FilterDateRecord(new Date(dateRecord)),
+      new FilterDateRecord(new Date()),
       new FilterStatus(isActive)
     )
   }

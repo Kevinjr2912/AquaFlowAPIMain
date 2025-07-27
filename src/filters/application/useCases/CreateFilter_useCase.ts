@@ -23,7 +23,7 @@ export class CreateFilterUseCase {
 
     filter.validateStructure();
 
-    await this.filterRepository.createFilter(filter);
+    // await this.filterRepository.createFilter(filter);
 
     return filter;
     
