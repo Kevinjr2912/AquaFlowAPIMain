@@ -27,7 +27,8 @@ export class SignInUseCase {
     if(!isValidPassword) throw new UnauthorizedUserError("Invalid Password");
 
     return await this.generateTokenService.execute({
-      id: user.getEmail(),
+      id: user.getUserId(),
+      email: user.getEmail(),
       firstName: user.getFirstName(),
       lastName: user.getLastName(),
       role: user.getUserRole()
