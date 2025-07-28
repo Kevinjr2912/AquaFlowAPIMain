@@ -9,6 +9,7 @@ import { config } from "../../core/config";
 import { JWTGenerateToken } from "../application/services/JWTGenerateToken_service";
 import { SignInController } from "./controllers/SignIn_controller";
 import { userPostgreSQL } from "../../users/infraestructure/dependencies";
+import { JWTVerifyToken } from "../application/services/JWTVerifyToken";
 
 const bcrypt = new Bcrypt();
 const bcryptPasswordHasher  = new BcryptPasswordHasher(bcrypt);
@@ -16,6 +17,7 @@ const bcryptComparePassword = new BcryptComparePassword(bcrypt);
 
 const jwt = new JWT(config.SECRET_KEY!);
 const jwtGenerateToken = new JWTGenerateToken(jwt);
+export const jwtVerifyToken = new JWTVerifyToken(jwt);
 
 // useCases
 const signUpUseCase = new SignUpUseCase(userPostgreSQL, bcryptPasswordHasher);
