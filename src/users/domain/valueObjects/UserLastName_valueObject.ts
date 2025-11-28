@@ -10,6 +10,7 @@ export class UserLastName {
     this.ensureDefined(sanitized);
     this.ensureTwoSurnames(sanitized);
     this.ensureOnlyLetters(sanitized);
+    this.ensureNoSQLCharacters(sanitized);
   }
 
   private ensureDefined(value: string): void {
@@ -33,6 +34,13 @@ export class UserLastName {
       if (!lettersOnly.test(surname)) {
         throw new InvalidArgumentError(`"${surname}" is not valid. Only letters are allowed`);
       }
+    }
+  }
+
+  private ensureNoSQLCharacters(value: string): void {
+    const dangerousChars = /['";=\-\\\/\*\(\)<>]/;
+    if (dangerousChars.test(value)) {
+      throw new InvalidArgumentError("Last name contains invalid characters");
     }
   }
 }
